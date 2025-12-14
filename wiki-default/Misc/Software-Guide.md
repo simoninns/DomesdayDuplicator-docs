@@ -22,15 +22,21 @@ The development environment for the FPGA code is Intel Quartus Prime Version 18.
 ## USB device configuration
 In order to program the DE0-Nano it is necessary to provide user-space access to the USB programming device. To add the required rules create the following file:
 
-```/etc/udev/rules.d/40-altera-usbblaster.rules```
+```
+/etc/udev/rules.d/40-altera-usbblaster.rules
+```
 
 Then place the following configuration in the rules file:
 
-```SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6001|6002|6003", OWNER="root", GROUP="root", MODE="0666", SYMLINK+="usbblaster"```
+```
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6001|6002|6003", OWNER="root", GROUP="root", MODE="0666", SYMLINK+="usbblaster"
+```
 
 Then issue the following command to re-read the USB configuration rules:
 
-```sudo udevadm control --reload-rules```
+```
+sudo udevadm control --reload-rules
+```
 
 ## Programming the DE0-Nano
 In order to program the DE0-Nano so that the Domesday Duplicator software is loaded and executed on power up, it is necessary to program the EPCS64 serial configuration device.  Instructions for programming the serial device can be found in the DE0-Nano user manual available from Terasic. 
